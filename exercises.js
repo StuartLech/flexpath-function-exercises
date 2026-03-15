@@ -20,7 +20,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   */
 
   // Modify the line of code BELOW to run a different exercise
-  exercise_01();
+  exercise_11();
   // Modify the line of code ABOVE to run a different exercise
 }
 
@@ -41,8 +41,11 @@ function exercise_01() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  const placeholder = "Delete this line and code here";
-
+  function calculateArea(radius) {
+    return Math.PI * radius ** 2;
+  }
+  const circleArea = calculateArea(2);
+  console.log(circleArea);
   // CODE IN THE OPEN LINES ABOVE
 }
 
@@ -61,8 +64,10 @@ function exercise_02() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  const placeholder = "Delete this line and code here";
-
+  const circleArea = function (radius){
+    return Math.PI * radius * radius;
+  }
+  console.log(circleArea(10));
   // CODE IN THE OPEN LINES ABOVE
 }
 
@@ -78,8 +83,10 @@ function exercise_03() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  const placeholder = "Delete this line and code here";
-
+  const circleArea = (radius) => {
+    return Math.PI * radius * radius;
+  }
+  console.log(circleArea(5));
   // CODE IN THE OPEN LINES ABOVE
 }
 
@@ -99,7 +106,18 @@ function exercise_04() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  const placeholder = "Delete this line and code here";
+  const isValidEmail = (string) =>{
+    if ((string.includes("@") && (string.indexOf("@") === string.lastIndexOf("@"))) && (string.includes(".") && (string.indexOf(".")>string.indexOf("@")))){
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
+  
+
+  console.log(isValidEmail("StLech2002@gmail.com")); // Outputs: true
+  console.log(isValidEmail(".invalid-@email")); // Outputs: false
 
   // CODE IN THE OPEN LINES ABOVE
 }
@@ -120,7 +138,12 @@ function exercise_05() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  const placeholder = "Delete this line and code here";
+  function greet(name, greeting = 'Hello'){
+    let msg = `${greeting} ${name}`;
+    return msg;
+  }
+
+  console.log(greet("Stuart", ));
 
   // CODE IN THE OPEN LINES ABOVE
 }
@@ -152,6 +175,10 @@ function exercise_06() {
     Write what you think will happen IN THIS COMMENT BLOCK.
     Then explain why the code behaved as it did.
 
+    The code will display "Local" Then it will display "Global"
+    This is because showMessage() function call is first invoked and displays its local score message variable
+    Then the console.log(message), the message variable is in the global scope.
+
   */
 }
 
@@ -174,8 +201,16 @@ function exercise_07() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  const placeholder = "Delete this line and code here";
+  function incrementCounter(){
+    let counter = 0
+    counter++;
+    console.log(counter);
+  }
 
+  incrementCounter();
+  incrementCounter();
+
+  //cant access counter outside function because it is in a local scope
   // CODE IN THE OPEN LINES ABOVE
 }
 
@@ -193,8 +228,15 @@ function exercise_08() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  const placeholder = "Delete this line and code here";
+  function makeMultiplier(multiplier){
+    return function (number){
+      return number * multiplier;
+    };
+  }
 
+  const double = makeMultiplier(3);
+  const _new = double(5);
+  console.log(_new);
   // CODE IN THE OPEN LINES ABOVE
 }
 
@@ -220,10 +262,24 @@ function exercise_09() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  const placeholder = "Delete this line and code here";
+  let factorial = (n) =>{
+    if (n<0){
+      return "Bad number input";
+    }
+    else if (n===0 || n===1){
+      return n = 1;
+    }
+    else{
+      if (n>1){
+        return n * factorial(n-1);
+      }
+    }
+  }
+  console.log(factorial(-1));
+  }
 
   // CODE IN THE OPEN LINES ABOVE
-}
+
 
 function exercise_10() {
   const fruits = ["apple", "banana", "cherry"];
@@ -237,8 +293,13 @@ function exercise_10() {
   
   */
   // CODE IN THE OPEN LINES BELOW
+    fruits.forEach(function(fruit){
+      console.log(fruit);
+    })
 
-  const placeholder = "Delete this line and code here";
+  
+  
+  
 
   // CODE IN THE OPEN LINES ABOVE
 }
@@ -258,11 +319,15 @@ function exercise_11() {
   const numbers = [1, 2, 3, 4, 5];
   let sum = 0;
 
-  for (let i = 0; i < numbers.length; i++) {
-    sum += numbers[i];
-  }
+ // for (let i = 0; i < numbers.length; i++) {
+ //   sum += numbers[i];
+ // }
+ 
+ const sumWithInitial = numbers.prototype.reduce(
+  (accumulator, currentValue) => accumulator + currentValue, sum);
+  console.log(sumWithInitial);
 
-  console.log(sum); // Outputs: 15
+ // Outputs: 15
 
   // REPLACE the code above
 }
