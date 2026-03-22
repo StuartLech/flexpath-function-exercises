@@ -20,7 +20,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
   */
 
   // Modify the line of code BELOW to run a different exercise
-  exercise_11();
+  exercise_09();
   // Modify the line of code ABOVE to run a different exercise
 }
 
@@ -41,11 +41,12 @@ function exercise_01() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  function calculateArea(radius) {
-    return Math.PI * radius ** 2;
+  function calculateArea(radius){
+    let circleArea = Math.PI * radius ** 2;
+    return circleArea;
   }
-  const circleArea = calculateArea(2);
-  console.log(circleArea);
+  console.log(`Circle Area ${calculateArea(5)}`);
+
   // CODE IN THE OPEN LINES ABOVE
 }
 
@@ -64,10 +65,11 @@ function exercise_02() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  const circleArea = function (radius){
-    return Math.PI * radius * radius;
+let calculateArea = function (radius){
+    let circleArea = Math.PI * radius ** 2;
+    return circleArea;
   }
-  console.log(circleArea(10));
+  console.log(`Circle Area ${calculateArea(7)}`);
   // CODE IN THE OPEN LINES ABOVE
 }
 
@@ -83,10 +85,14 @@ function exercise_03() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  const circleArea = (radius) => {
-    return Math.PI * radius * radius;
+  let calculateArea = radius => {
+    let circleArea = Math.PI * radius ** 2;
+    return circleArea;
   }
-  console.log(circleArea(5));
+  console.log(`Circle Area ${calculateArea(10)}`);
+  // CODE IN THE OPEN LINES ABOVE
+
+
   // CODE IN THE OPEN LINES ABOVE
 }
 
@@ -106,18 +112,17 @@ function exercise_04() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  const isValidEmail = (string) =>{
-    if ((string.includes("@") && (string.indexOf("@") === string.lastIndexOf("@"))) && (string.includes(".") && (string.indexOf(".")>string.indexOf("@")))){
-      return true;
-    }
-    else{
-      return false;
-    }
+  let isValidEmail = string =>{
+   let firstCheck = string.includes("@") && string.includes(".")? true:false;
+   let secondCheck = string.indexOf("@") === string.lastIndexOf('@')? true:false;
+   let thirdCheck = string.lastIndexOf('.') > string.indexOf('@')? true:false;
+   if(!firstCheck || !secondCheck || !thirdCheck){
+    return false;
+   }
+   return true;
   }
+  console.log(isValidEmail("St.Lech2002@gmail.com"));
   
-
-  console.log(isValidEmail("StLech2002@gmail.com")); // Outputs: true
-  console.log(isValidEmail(".invalid-@email")); // Outputs: false
 
   // CODE IN THE OPEN LINES ABOVE
 }
@@ -138,12 +143,12 @@ function exercise_05() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  function greet(name, greeting = 'Hello'){
-    let msg = `${greeting} ${name}`;
+  let greeting = function(name, greet = 'Hello'){
+    let msg =  `${greet}, ${name}!`;
     return msg;
   }
 
-  console.log(greet("Stuart", ));
+  console.log(greeting('Stuart', "welcome"));
 
   // CODE IN THE OPEN LINES ABOVE
 }
@@ -178,7 +183,6 @@ function exercise_06() {
     The code will display "Local" Then it will display "Global"
     This is because showMessage() function call is first invoked and displays its local score message variable
     Then the console.log(message), the message variable is in the global scope.
-
   */
 }
 
@@ -201,7 +205,7 @@ function exercise_07() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  function incrementCounter(){
+   function incrementCounter(){
     let counter = 0
     counter++;
     console.log(counter);
@@ -209,8 +213,8 @@ function exercise_07() {
 
   incrementCounter();
   incrementCounter();
+    
 
-  //cant access counter outside function because it is in a local scope
   // CODE IN THE OPEN LINES ABOVE
 }
 
@@ -228,15 +232,17 @@ function exercise_08() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  function makeMultiplier(multiplier){
-    return function (number){
-      return number * multiplier;
-    };
+  let makeMultiplier = multipler =>{
+    return number =>{
+      return number * multipler;
+    }
   }
 
-  const double = makeMultiplier(3);
-  const _new = double(5);
-  console.log(_new);
+  let multipler = makeMultiplier(5);
+  console.log(multipler);
+  let numberXmultiplier = multipler(3);
+  console.log(numberXmultiplier);
+
   // CODE IN THE OPEN LINES ABOVE
 }
 
@@ -262,24 +268,26 @@ function exercise_09() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  let factorial = (n) =>{
-    if (n<0){
-      return "Bad number input";
+  let factorial = function(n){
+    if (n < 0){
+      let msg = `Bad number input`;
+      return msg;
     }
-    else if (n===0 || n===1){
-      return n = 1;
+    else if(n === 0 || n === 1){
+      let answer = 1;
+      return answer;
     }
     else{
-      if (n>1){
-        return n * factorial(n-1);
-      }
+      return n * factorial(n-1);
     }
   }
+  
+  console.log(factorial(0));
+  console.log(factorial(1));
   console.log(factorial(-1));
-  }
-
+  console.log(factorial(5));
   // CODE IN THE OPEN LINES ABOVE
-
+}
 
 function exercise_10() {
   const fruits = ["apple", "banana", "cherry"];
@@ -293,13 +301,8 @@ function exercise_10() {
   
   */
   // CODE IN THE OPEN LINES BELOW
-    fruits.forEach(function(fruit){
-      console.log(fruit);
-    })
 
-  
-  
-  
+  const placeholder = "Delete this line and code here";
 
   // CODE IN THE OPEN LINES ABOVE
 }
@@ -319,15 +322,11 @@ function exercise_11() {
   const numbers = [1, 2, 3, 4, 5];
   let sum = 0;
 
- // for (let i = 0; i < numbers.length; i++) {
- //   sum += numbers[i];
- // }
- 
- const sumWithInitial = numbers.prototype.reduce(
-  (accumulator, currentValue) => accumulator + currentValue, sum);
-  console.log(sumWithInitial);
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
 
- // Outputs: 15
+  console.log(sum); // Outputs: 15
 
   // REPLACE the code above
 }
