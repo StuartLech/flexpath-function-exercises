@@ -302,7 +302,7 @@ function exercise_10() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  const placeholder = "Delete this line and code here";
+  fruits.forEach((fruit) => console.log(fruit));
 
   // CODE IN THE OPEN LINES ABOVE
 }
@@ -320,11 +320,10 @@ function exercise_11() {
   // REPLACE the code below
 
   const numbers = [1, 2, 3, 4, 5];
-  let sum = 0;
-
-  for (let i = 0; i < numbers.length; i++) {
-    sum += numbers[i];
-  }
+  const sum = numbers.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0
+  );
 
   console.log(sum); // Outputs: 15
 
@@ -346,7 +345,8 @@ function exercise_12() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  const placeholder = "Delete this line and code here";
+  const evenNumbers = numbers.filter((number) => number % 2 === 0);
+  console.log(evenNumbers);
 
   // CODE IN THE OPEN LINES ABOVE
 }
@@ -368,7 +368,23 @@ function exercise_13() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  const placeholder = "Delete this line and code here";
+  function modifyPrimitive(value) {
+    value += 1;
+    console.log("Inside primitive function:", value);
+  }
+
+  function modifyObject(obj) {
+    obj.value += 1;
+    console.log("Inside object function:", obj.value);
+  }
+
+  let number = 5;
+  modifyPrimitive(number);
+  console.log("Outside primitive function:", number);
+
+  const object = { value: 5 };
+  modifyObject(object);
+  console.log("Outside object function:", object.value);
 
   // CODE IN THE OPEN LINES ABOVE
 }
@@ -386,7 +402,13 @@ function exercise_14() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  const placeholder = "Delete this line and code here";
+  function addProperty(obj) {
+    obj.newProperty = "I am new!";
+  }
+
+  const myObject = { existingProperty: "I exist" };
+  addProperty(myObject);
+  console.log(myObject);
 
   // CODE IN THE OPEN LINES ABOVE
 }
@@ -412,7 +434,8 @@ function exercise_15() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  const placeholder = "Delete this line and code here";
+  const user = users.find((user) => user.name === "Bob");
+  console.log(user);
 
   // CODE IN THE OPEN LINES ABOVE
 }
@@ -435,7 +458,9 @@ function exercise_16() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  const placeholder = "Delete this line and code here";
+  Object.entries(person).forEach(([key, value]) => {
+    console.log(`${key}: ${value}`);
+  });
 
   // CODE IN THE OPEN LINES ABOVE
 }
@@ -454,7 +479,13 @@ function exercise_17() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  const placeholder = "Delete this line and code here";
+  function capitalizeStrings(strings) {
+    return strings.map(
+      (str) => str.charAt(0).toUpperCase() + str.slice(1).toLowerCase()
+    );
+  }
+
+  console.log(capitalizeStrings(["apple", "BANANA", "cherry"]));
 
   // CODE IN THE OPEN LINES ABOVE
 }
@@ -477,7 +508,12 @@ function exercise_18() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  const placeholder = "Delete this line and code here";
+  function power(base, exponent = 2) {
+    return Math.pow(base, exponent);
+  }
+
+  console.log(power(5));
+  console.log(power(2, 3));
 
   // CODE IN THE OPEN LINES ABOVE
 }
@@ -498,7 +534,9 @@ function exercise_19() {
   */
   // CODE IN THE OPEN LINES BELOW
 
-  const placeholder = "Delete this line and code here";
+  (() => {
+    console.log("This message is logged from an IIFE.");
+  })();
 
   // CODE IN THE OPEN LINES ABOVE
 }
